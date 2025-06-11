@@ -20,7 +20,7 @@ public class ParentList<T> {
     private Node<T> tail;
     private int size;
 
-    protected Node<T> cursor;
+    
 
     public ParentList() {}
 
