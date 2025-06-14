@@ -181,4 +181,19 @@ public class DynArrayTest {
         assertEquals(Status.ERROR, array.getInsertStatus());
         assertEquals(16, array.getCapacity());
     }
+
+    @Test
+    public void insertTest_insert_OK() {
+        array = new DynArray<>();
+        for (int i = 0; i < 16; i++) {
+            array.add(i);
+        }
+
+        array.insert(1, 100);
+
+        assertEquals(17, array.size());
+        assertEquals(Status.OK, array.getInsertStatus());
+        assertEquals((Integer) 100, array.get(1));
+        assertEquals(25, array.getCapacity());
+    }
 }

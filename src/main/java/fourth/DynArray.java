@@ -65,7 +65,7 @@ public class DynArray<T> implements Array<T> {
         if (!isCorrectIndex) {
             insertStatus = Status.ERROR;
         } else {
-            if (size + 1 == capacity) {
+            if (size + 1 > capacity) {
                 increaseStorage();
             }
 
@@ -144,6 +144,6 @@ public class DynArray<T> implements Array<T> {
     }
 
     public enum Status {
-        OK, ERROR, NIL;
+        OK, ERROR, NIL
     }
 }
