@@ -20,7 +20,7 @@ public class ParentList<T> {
     private Node<T> tail;
     private int size;
 
-    
+    protected Node<T> cursor;
 
     public ParentList() {}
 
@@ -203,12 +203,15 @@ public class ParentList<T> {
 
     // Предусловие: список не пуст
     public T get() {
+        T res = null;
+
         if (cursor == null) {
             getStatus = Status.ERR;
         } else {
             getStatus = Status.OK;
+            res = cursor.getValue();
         }
-        return cursor.getValue();
+        return res;
     }
 
     // Предусловие: --
@@ -267,6 +270,26 @@ public class ParentList<T> {
 
     public Status getTailStatus() {
         return tailStatus;
+    }
+
+    public Status getValueStatusStatus() {
+        return valueStatus;
+    }
+
+    public Status getFindStatusStatus() {
+        return findStatus;
+    }
+
+    public Status getAddTailStatus() {
+        return addTailStatus;
+    }
+
+    public Status getReplaceStatus() {
+        return replaceStatus;
+    }
+
+    public Status getRemoveAllStatus() {
+        return removeAllStatus;
     }
 
 
