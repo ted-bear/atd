@@ -1,12 +1,16 @@
-package fifth;
+package sixth;
 
-public interface Queue<T> {
+public interface Deque<T> {
 
     // Requests
 
     // Предусловия: Длина очереди не 0
     // Постусловия:
     T peekFront();
+
+    // Предусловия: Длина очереди не 0
+    // Постусловия:
+    T peekTail();
 
     // Предусловия: --
     // Постусловия: --
@@ -18,8 +22,15 @@ public interface Queue<T> {
     // Постусловия: Добавлен элемент в хвост
     void addTail(T value);
 
+    // Предусловия:
+    // Постусловия: Добавлен элемент в начало
+    void addFront(T value);
+
     // Предусловия: Длина очереди не 0
     // Постусловия: Удален элемент с головы
     void removeFront();
 
+    // Предусловия: Длина очереди не 0
+    // Постусловия: Удален элемент с хвоста
+    void removeTail();
 }

@@ -9,8 +9,8 @@ public class DynQueue<T> implements Queue<T> {
     private Status dequeStatus = Status.NIL;
 
 
-    private int size;
-    private final LinkedList<T> storage;
+    protected int size;
+    protected final LinkedList<T> storage;
 
     public DynQueue() {
         storage = new LinkedList<>();
@@ -18,7 +18,7 @@ public class DynQueue<T> implements Queue<T> {
     }
 
     @Override
-    public T peek() {
+    public T peekFront() {
         T res = null;
 
         if (size == 0) {
@@ -37,14 +37,13 @@ public class DynQueue<T> implements Queue<T> {
     }
 
     @Override
-    public void enqueue(T value) {
+    public void addTail(T value) {
         storage.addFirst(value);
         enqueueStatus = Status.OK;
         size++;
     }
 
-    @Override
-    public void dequeue() {
+    public void removeFront() {
         if (size == 0) {
             dequeStatus = Status.ERROR;
         } else {
