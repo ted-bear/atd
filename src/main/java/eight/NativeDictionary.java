@@ -109,14 +109,14 @@ public class NativeDictionary<K, V> implements Map<K, V> {
     private int seekSlot(final K key) {
         int firstIndex = hashFun(key);
 
-        if (slots[firstIndex] == null) {
+        if (slots[firstIndex] == null || key.equals(slots[firstIndex])) {
             return firstIndex;
         }
 
         int index = getIndex(firstIndex);
 
         while (index != firstIndex) {
-            if (slots[index] == null) {
+            if (slots[index] == null || key.equals(slots[index])) {
                 return index;
             }
             index = getIndex(index);
