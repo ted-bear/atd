@@ -1,30 +1,28 @@
-package eight;
+package ninth;
 
 import common.Status;
 
-public interface Map<K, V> {
+public interface Set<T> {
 
     // Commands
 
     // Предусловия: --
     // Постусловия: Добавлен элемент или если он существовал значение изменено
-    void put(K key, V value);
+    void put(T element);
 
     // Предусловия: Элемент существует
     // Постусловия: Элемент удален
-    void remove(K key);
+    void remove(T element);
 
     // Requests
 
-    // Предусловия: Элемент существует
+    // Предусловия: Множество не пустое
     // Постусловия: --
-    V get(K key);
+    Boolean contains(T element);
 
     int size();
 
     Status getPutStatus();
 
     Status getRemoveStatus();
-
-    Status getGetStatus();
 }

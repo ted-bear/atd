@@ -3,6 +3,8 @@ package eight;
 import java.lang.reflect.Array;
 import java.util.Objects;
 
+import common.Status;
+
 public class NativeDictionary<K, V> implements Map<K, V> {
 
     private Status putStatus = Status.NIL;
@@ -67,6 +69,7 @@ public class NativeDictionary<K, V> implements Map<K, V> {
         int firstIndex = hashFun(key);
 
         if (Objects.equals(slots[firstIndex], key)) {
+            getStatus = Status.OK;
             return values[firstIndex];
         }
 
@@ -74,11 +77,13 @@ public class NativeDictionary<K, V> implements Map<K, V> {
 
         while (index != firstIndex) {
             if (Objects.equals(slots[index], key)) {
+                getStatus = Status.OK;
                 return values[index];
             }
             index = getIndex(index);
         }
 
+        getStatus = Status.ERROR;
         return null;
     }
 
