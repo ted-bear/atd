@@ -1,6 +1,8 @@
 package eight;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import common.Status;
@@ -11,24 +13,25 @@ public class NativeDictionary<K, V> implements Map<K, V> {
     private Status removeStatus = Status.NIL;
     private Status getStatus = Status.NIL;
 
-    public int size;
-    public K[] slots;
-    public V[] values;
+    private int size;
+    private final int capacity;
+    private final K[] slots;
+    private final V[] values;
 
     public NativeDictionary(
             int sz,
             Class<?> keyClass,
             Class<?> valueClass
     ) {
-        size = sz;
-        slots = (K[]) Array.newInstance(keyClass, this.size);
-        values = (V[]) Array.newInstance(valueClass, this.size);
+        capacity = sz;
+        slots = (K[]) Array.newInstance(keyClass, capacity);
+        values = (V[]) Array.newInstance(valueClass, capacity);
     }
 
 
     @Override
     public void put(K key, V value) {
-        if (size + 1 > slots.length) {
+        if (size + 1 > capacity) {
             putStatus = Status.ERROR;
         } else {
             int index = seekSlot(key);
@@ -109,6 +112,16 @@ public class NativeDictionary<K, V> implements Map<K, V> {
     @Override
     public Status getGetStatus() {
         return getStatus;
+    }
+
+    public List<K> getKeys() {
+        var list = new ArrayList<K>(slots.length);
+        for (K slot : slots) {
+            if (slot != null) {
+                list.add(slot);
+            }
+        }
+        return list;
     }
 
     private int hashFun(K key) {

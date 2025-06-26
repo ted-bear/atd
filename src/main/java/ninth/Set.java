@@ -1,5 +1,7 @@
 package ninth;
 
+import java.util.List;
+
 import common.Status;
 
 public interface Set<T> {
@@ -21,6 +23,14 @@ public interface Set<T> {
     Boolean contains(T element);
 
     int size();
+
+    Set<T> intersection(Set<T> set2);
+
+    Set<T> union(Set<T> set2);
+
+    Set<T> difference(Set<T> set2);
+
+    List<T> toList();
 
     Status getPutStatus();
 

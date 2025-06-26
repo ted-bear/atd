@@ -1,5 +1,7 @@
 package ninth;
 
+import java.util.List;
+
 import common.Status;
 import eight.NativeDictionary;
 
@@ -10,9 +12,13 @@ public class NativeSet<T> implements Set<T> {
 
     private final NativeDictionary<T, Object> dictionary;
     private final Object object = new Object();
+    private Integer capacity;
+    private Class<T> type;
 
-    public NativeSet(int size, Class<T> clazz) {
-        dictionary = new NativeDictionary<>(size, clazz, Object.class);
+    public NativeSet(int sz, Class<T> clazz) {
+        capacity = sz;
+        type = clazz;
+        dictionary = new NativeDictionary<>(sz, clazz, Object.class);
     }
 
     @Override
@@ -35,6 +41,51 @@ public class NativeSet<T> implements Set<T> {
 
         dictionary.get(element);
         return dictionary.getGetStatus() == Status.OK;
+    }
+
+    public List<T> toList() {
+        return dictionary.getKeys();
+    }
+
+    @Override
+    public Set<T> intersection(Set<T> set2) {
+        NativeSet<T> intersectionSet = new NativeSet<>(capacity, type);
+
+        for (T el : intersectionSet.toList()) {
+            if (contains(el)) {
+                intersectionSet.put(el);
+            }
+        }
+
+        return intersectionSet;
+    }
+
+    @Override
+    public Set<T> union(Set<T> set2) {
+        var unionSet = new NativeSet<>(capacity, type);
+
+        for (T el : dictionary.getKeys()) {
+            unionSet.put(el);
+        }
+
+        for (T el : set2.toList()) {
+            unionSet.put(el);
+        }
+
+        return unionSet;
+    }
+
+    @Override
+    public Set<T> difference(Set<T> set2) {
+        var diffSet = new NativeSet<>(capacity, type);
+
+        for (T el : dictionary.getKeys()) {
+            if (!set2.contains(el)) {
+                diffSet.put(el);
+            }
+        }
+
+        return diffSet;
     }
 
     @Override
