@@ -32,10 +32,14 @@ public class NativeDictionary<K, V> implements Map<K, V> {
             putStatus = Status.ERROR;
         } else {
             int index = seekSlot(key);
+
+            if (slots[index] == null) {
+                size++;
+            }
+
             slots[index] = key;
             values[index] = value;
             putStatus = Status.OK;
-            size++;
         }
     }
 
