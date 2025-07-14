@@ -1,6 +1,6 @@
-package eight;
+package atd.eight;
 
-import common.Status;
+import atd.common.Status;
 
 public interface Map<K, V> {
 

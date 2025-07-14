@@ -1,6 +1,6 @@
-package sixth;
+package atd.sixth;
 
-import fifth.DynQueue;
+import atd.fifth.DynQueue;
 
 public class DynDeque<T> extends DynQueue<T> implements Deque<T> {
 

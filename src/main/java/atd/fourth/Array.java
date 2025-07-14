@@ -1,4 +1,4 @@
-package fourth;
+package atd.fourth;
 
 public interface Array<T> {
 

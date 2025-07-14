@@ -1,9 +1,9 @@
-package ninth;
+package atd.ninth;
 
 import java.util.List;
 
-import common.Status;
-import eight.NativeDictionary;
+import atd.common.Status;
+import atd.eight.NativeDictionary;
 
 public class NativeSet<T> implements Set<T> {
 

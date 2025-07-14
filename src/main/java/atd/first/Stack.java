@@ -1,4 +1,4 @@
-package first;
+package atd.first;
 
 public interface Stack <T> {
 

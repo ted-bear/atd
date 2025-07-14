@@ -1,8 +1,8 @@
-package ninth;
+package atd.ninth;
 
 import java.util.List;
 
-import common.Status;
+import atd.common.Status;
 
 public interface Set<T> {
 

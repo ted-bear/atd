@@ -2,9 +2,10 @@ package fourth;
 
 import static org.junit.Assert.assertEquals;
 
+import atd.fourth.DynArray;
 import org.junit.Test;
 
-import fourth.DynArray.Status;
+import atd.fourth.DynArray.Status;
 
 public class DynArrayTest {
 

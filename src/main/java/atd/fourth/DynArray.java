@@ -1,4 +1,4 @@
-package fourth;
+package atd.fourth;
 
 public class DynArray<T> implements Array<T> {
 

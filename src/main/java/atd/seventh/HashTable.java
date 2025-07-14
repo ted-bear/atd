@@ -1,4 +1,4 @@
-package seventh;
+package atd.seventh;
 
 import java.util.Objects;
 

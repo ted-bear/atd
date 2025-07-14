@@ -1,11 +1,11 @@
-package eight;
+package atd.eight;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import common.Status;
+import atd.common.Status;
 
 public class NativeDictionary<K, V> implements Map<K, V> {
 

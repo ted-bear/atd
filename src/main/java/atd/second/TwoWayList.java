@@ -1,4 +1,4 @@
-package second;
+package atd.second;
 
 public class TwoWayList<T> extends ParentList<T> {
 

@@ -1,4 +1,4 @@
-package first;
+package atd.first;
 
 public class BoundedStack<T> implements Stack<T> {
 
