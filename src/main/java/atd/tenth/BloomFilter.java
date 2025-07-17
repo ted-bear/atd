@@ -1,6 +1,6 @@
-package tenth;
+package atd.tenth;
 
-import common.Status;
+import atd.common.Status;
 
 public class BloomFilter implements IBloomFilter {
 
