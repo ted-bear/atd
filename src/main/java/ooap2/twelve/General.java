@@ -55,6 +55,16 @@ class General implements Serializable {
         return this.getClass();
     }
 
+    public static Integer tryAssign(General target, Object source) {
+        try {
+            target = (General) source;
+            return 1; // Success
+        } catch (Exception e) {
+            return 0; // Fail
+        }
+
+    }
+
     private <T> T getCopy() throws Exception  {
         try {
             var byteArrayOutputStream = new ByteArrayOutputStream();
